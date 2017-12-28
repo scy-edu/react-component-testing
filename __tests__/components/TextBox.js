@@ -32,7 +32,8 @@ describe('<TextBox />', () => {
     it('renders correctly', () => {
       const tree = renderer.create(
         <TextBox { ...props } />
-      );
+      ).toJSON();
+      expect(tree).toMatchSnapshot();
     });
 
     it('should render TextInput', () => {

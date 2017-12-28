@@ -30,9 +30,8 @@ describe('<Button />', () => {
     });
 
     it('renders correctly', () => {
-      const tree = renderer.create(
-        <Button label='Send' />
-      );
+      const tree = renderer.create(<Button {...createTestProps() } />).toJSON();
+      expect(tree).toMatchSnapshot();
     });
 
     it('should render a label', () => {
