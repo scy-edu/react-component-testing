@@ -15,3 +15,33 @@ export function deleteTodo(index) {
         index,
     };
 } 
+
+function fetchTodosSuccess(body) {
+    return {
+        type: types.FETCH_TODOS_SUCCESS,
+        body,
+    };
+}
+
+function fetchTodosFailure(ex) {
+    return {
+        type: types.FETCH_TODOS_FAILURE,
+        ex,
+    }
+}
+
+function fetchTodosRequest() {
+    return {
+        type: types.FETCH_TODOS_REQUEST,
+    }
+}
+
+export function fetchTodos() {
+    return dispatch => {
+        dispatch(fetchTodosRequest());
+        return fetch('/todos')
+            .then(res => res.json())
+            .then(body => dispatch(fetchTodosSuccess(body)))
+            .catch(ex => dispatch(fetchTodosFailure(ex)));
+    };
+}
