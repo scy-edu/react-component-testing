@@ -1,12 +1,7 @@
 'use strict';
 
 import configureMockStore from 'redux-mock-store';
-import thunkMiddleware from 'redux-thunk';
-
-// configure the middleware in an array
-const middlewares = [
-    thunkMiddleware,
-];
+import middlewares from '../app/middlewares';
 
 // create the mock store
 const mockStore = configureMockStore(middlewares);
